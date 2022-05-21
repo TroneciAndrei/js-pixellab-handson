@@ -1,5 +1,7 @@
 console.log('Imi fac tema la JavaScript.');
+
 alert('Bine ai venit!');
+
 var nume = prompt('Bine ai venit, cum te cheama?');
 console.log(nume);
 
@@ -25,7 +27,7 @@ btn2.addEventListener('mouseover', function () {
   console.log('Ai vrea sa apesi acest buton?');
 });
 
-btn3.addEventListener('mouseover', function () {
-  var login = prompt('Add username');
+btn3.addEventListener('click', function () {
+  var login = prompt('Care este numele tau?');
   console.log(login);
 });
