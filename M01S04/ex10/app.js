@@ -41,6 +41,72 @@ person.skills.forEach(function (skill, index) {
   }
 });
 
+console.warn(' In mod similar, afiseaza skillurile care contin litera a. ');
+
+person.skills.forEach(function (skill) {
+  if (skill.startsWith('a') === true) {
+    console.log(skill);
+  }
+});
+
+console.warn(
+  ' Folosind forEach afiseaza propozitia: "Prietenii mei se numesc xxx yyy, xxx yyy, xxx yyy."',
+);
+var message = 'Prietenii mei se numesc ';
+person.friends.forEach(function (friend, index) {
+  var punctuation = ', ';
+
+  if (index === person.friends.length - 1) {
+    punctuation = '.';
+  }
+  message = message + friend.name + ' ' + friend.surname + punctuation;
+});
+console.log(message.trim());
+
+console.warn(
+  'Folosind forEach, afiseaza suma anilor de nastere a persoanelor ', //HELP
+);
+var year = '';
+var birthYear = 2022;
+person.friends.forEach(function (friend, index) {
+  year = Math.abs(friend.age - birthYear);
+  year += year;
+});
+console.log(year);
+
+console.warn(
+  ' Folosind forEach, afiseaza numarul total de ani pe care il au persoanele din arrayul friends, doar daca au varsta mai mare decat 30 inclusiv.',
+);
+var total = 0;
+person.friends.forEach(function (friend) {
+  if (friend.age >= 30) {
+    total += friend.age;
+  }
+});
+console.log(String(total));
+
+console.warn(
+  ' Folosind forEach, afiseaza suma anilor de nastere ai persoanelor care au varsta impara. ',
+);
+var sumAge = 0;
+person.friends.forEach(function (friend) {
+  if (friend.age % 2 !== 0) {
+    sumAge += friend.age;
+    sumTotal = String(sumAge);
+  }
+});
+console.log(sumTotal);
+
+console.warn(
+  ' Afiseaza diferenta de varsta dintre persoana si prietenii din arrayul friends daca aceasta este mai mare sau egala cu 2 ani.',
+);
+person.friends.forEach(function (friend) {
+  var ageDiff = Math.abs(person.age - friend.age);
+  if (ageDiff >= 2) {
+    console.log(ageDiff);
+  }
+});
+
 console.warn(
   'Afiseaza fraza: Intre Dragos si Larry este o diferenta de xx ani. Intre Dragos si Steven...',
 );
@@ -48,7 +114,6 @@ console.warn(
 var message = '';
 person.friends.forEach(function (friend) {
   var ageDiff = Math.abs(person.age - friend.age);
-  // v2 concatenare
   message +=
     'Intre ' +
     person.name +
@@ -70,3 +135,27 @@ person.skills
   .forEach(function (skill) {
     console.log(skill);
   });
+
+console.warn(
+  'Folosind obiectul person si forEach, afiseaza in consola skillurile pe care le are persoana.',
+);
+
+person.skills.forEach(function (skill) {
+  console.log(skill);
+});
+
+console.warn(' In mod similar, afiseaza skillurile care nu incep cu j.');
+person.skills.forEach(function (skill) {
+  if (skill.startsWith('j') === false) {
+    console.log(skill);
+  }
+});
+
+console.warn(
+  ' Folosind forEach, afiseaza numarul total de ani pe care il au persoanele din arrayul friends ',
+);
+var sumAge = 0;
+person.friends.forEach(function (friend) {
+  sumAge += friend.age;
+});
+console.log(String(sumAge));
