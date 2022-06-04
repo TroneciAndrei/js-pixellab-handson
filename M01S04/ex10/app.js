@@ -66,12 +66,12 @@ console.log(message.trim());
 console.warn(
   'Folosind forEach, afiseaza suma anilor de nastere a persoanelor ', //HELP
 );
-var year = 0;
+var sumYears = 0;
 var birthYear = 2022;
 person.friends.forEach(function (friend, index) {
-  year += Math.abs(friend.age - birthYear);
+  sumYears += Math.abs(friend.age - birthYear);
 });
-console.log(String(year));
+console.log(String(sumYears));
 
 console.warn(
   ' Folosind forEach, afiseaza numarul total de ani pe care il au persoanele din arrayul friends, doar daca au varsta mai mare decat 30 inclusiv.',
@@ -91,7 +91,7 @@ var sumAge = 0;
 person.friends.forEach(function (friend) {
   if (friend.age % 2 !== 0) {
     sumAge += friend.age;
-    sumTotal = String(sumAge);
+    sumAge.toString();
   }
 });
 console.log(sumTotal);

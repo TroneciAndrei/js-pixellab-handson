@@ -68,11 +68,11 @@
 var defaultNumber = 5;
 var defaultWarningMessage = `Nu ai introdus un numar. Folosesc ${defaultNumber}`;
 
-var limitInferior = prompt('Care este limita inferioara');
-var i = limitInferior;
+var lowerLimit = prompt('Care este limita inferioara');
+var i = lowerLimit;
 var number = prompt('Introdu un numar');
 
-var limitSuperior = prompt('Care este limita superioara');
+var upperLimit = prompt('Care este limita superioara');
 
 if (number === null || number.trim().length === 0) {
   console.warn(defaultWarningMessage);
@@ -93,5 +93,5 @@ do {
   }
 
   i++;
-} while (i <= limitSuperior);
+} while (i <= upperLimit);
 console.log(`Multiplii de ${number}`);
