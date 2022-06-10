@@ -85,3 +85,50 @@ Object.keys(person.friends).forEach(function (friendName) {
     `Diferenta de varsta intre ${friend.name} si ${person.name} este de ${ageDiff} ani.`,
   );
 });
+
+console.warn(
+  `Folosind Object.keys() pe proprietatea skills, afiseaza toate abilitatile din obiectul skills.`,
+);
+Object.keys(person.skills).forEach(function (personSkill) {
+  console.log(personSkill);
+});
+
+console.warn(
+  `Prin aceeasi metoda, afiseaza o lista cu numele complet al prietenilor.`,
+);
+Object.keys(person.friends).forEach(function (friendName) {
+  var friend = person.friends[friendName];
+  console.log(friend.name + ' ' + friend.surname);
+});
+
+console.warn(
+  `Afiseaza propozitia: “Prietenii mei sunt Larry Larryson, Steven Stevenson si Carol Carolson.” folosind Object.keys()`,
+);
+let message01 = 'Prietenii mei sunt: ';
+
+Object.keys(person.friends).forEach(function (friendName, index) {
+  var friend = person.friends[friendName];
+  var punctuation = ', ';
+  // Cum aflam index-ul in asa fel in cat sa scadem -1 si sa modificam punctuatia?
+  if (index === person.friends.length - 1) {
+    punctuation = '.';
+  }
+
+  if (index === person.friends.length - 2) {
+    punctuation = ' si ';
+  }
+
+  message01 += friend.name + ' ' + friend.surname + punctuation;
+});
+
+console.log(message01);
+
+console.warn(
+  `Folosind bucla, afiseaza mai multe propozitii (cate una per console.log()) care sa afiseze: “Larry are xx ani. Steven are …”`,
+);
+
+Object.keys(person.friends).forEach(function (friendName) {
+  var friend = person.friends[friendName];
+
+  console.log(`${friend.name} are ${friend.age} ani.`);
+});

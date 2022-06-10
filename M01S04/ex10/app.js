@@ -94,7 +94,7 @@ person.friends.forEach(function (friend) {
     sumAge.toString();
   }
 });
-console.log(sumTotal);
+console.log(sumAge);
 
 console.warn(
   ' Afiseaza diferenta de varsta dintre persoana si prietenii din arrayul friends daca aceasta este mai mare sau egala cu 2 ani.',
@@ -158,3 +158,7 @@ person.friends.forEach(function (friend) {
   sumAge += friend.age;
 });
 console.log(String(sumAge));
+
+person.friends.reverse().forEach(function (friend) {
+  console.log(friend.name + ' ' + friend.surname);
+});
