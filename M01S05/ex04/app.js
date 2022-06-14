@@ -50,9 +50,18 @@ console.warn(
   `Folosind aceasta noua functie calculeaza suprafata totala a doua dreptunghiuri de 48 pe 92 si 51 pe 102.`,
 );
 
-const aggregateSurfaceArea = (length, width) => {
-  return calculateRectangleArea(length, width);
+// const aggregateSurfaceArea = (length, width) => {
+//   return calculateRectangleArea(length, width);
+// };
+
+// const total = aggregateSurfaceArea(48, 92) + calculateRectangleArea(51, 102);
+// console.log(total);
+
+const aggregateSurfaceArea = (L, l, L1, l1) => {
+  let firstRectangle = calculateRectangleArea(L, l);
+  let secondRectangle = calculateRectangleArea(L1, l1);
+
+  return firstRectangle + secondRectangle;
 };
 
-const total = aggregateSurfaceArea(48, 92) + calculateRectangleArea(51, 102);
-console.log(total);
+console.log(aggregateSurfaceArea(48, 92, 51, 102));
