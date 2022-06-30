@@ -98,14 +98,22 @@ class Car {
 
   toggleHazards() {
     if (this.areHazardsOn) {
-      this.engageBreak();
-      setInterval(() => {
+      this.interval = setInterval(() => {
+        this.toggleLights();
         this.areHazardsOn = false;
-        if (!this.areHazardsOn) {
-          this.disengageBreak();
-        }
-      }, 2000);
+      }, 500);
     }
+
+    if (!this.areHazardsOn) {
+      clearInterval(this.interval);
+      this.disengageBreak();
+      delete this.interval;
+    }
+  }
+
+  toggleLights() {
+    this.lightFront.classList.toggle('light--on');
+    this.lightBack.classList.toggle('light--on');
   }
 
   render() {
