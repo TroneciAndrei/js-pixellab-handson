@@ -75,7 +75,8 @@ class Car {
   }
 
   engageBreak() {
-    this.lightBack.style.backgroundColor = 'red';
+    this.lightFront.classList.toggle('light--on');
+    this.lightBack.classList.toggle('light--on');
   }
 
   disengageBreak() {
@@ -99,7 +100,7 @@ class Car {
   toggleHazards() {
     if (this.areHazardsOn) {
       this.interval = setInterval(() => {
-        this.toggleLights();
+        this.engageBreak();
         this.areHazardsOn = false;
       }, 500);
     }
@@ -111,10 +112,10 @@ class Car {
     }
   }
 
-  toggleLights() {
-    this.lightFront.classList.toggle('light--on');
-    this.lightBack.classList.toggle('light--on');
-  }
+  // toggleLights() {
+  //   this.lightFront.classList.toggle('light--on');
+  //   this.lightBack.classList.toggle('light--on');
+  // }
 
   render() {
     document.body.append(this.frame);
