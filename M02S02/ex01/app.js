@@ -1,3 +1,5 @@
+'use strict';
+
 // var p = document.createElement('p');
 // p.innerText = 'Textul care trebuie sa apara in paragraf';
 // p.id = 'myParagraph';
@@ -30,6 +32,38 @@ $('<span>', {
   text: 'ParolaMea',
 }).appendTo($p2);
 
+const $container = $('.container');
 $('<h2>', {
   text: 'Mesaje',
-}).prependTo($('.container'));
+}).prependTo($container);
+
+const $navigation = $('<div>', {
+  class: 'navigation',
+});
+
+$container.after($navigation);
+
+const $firstLink = $('<a>', {
+  text: 'First Link',
+  class: 'nav-link',
+  title: 'First Link',
+  href: 'https://google.com',
+}).appendTo($navigation);
+
+$firstLink.before(
+  $('<h2>', {
+    text: 'Navigation',
+  }),
+);
+
+$firstLink.prepend(
+  $('<sup></sup>', {
+    text: 1,
+  }),
+);
+
+$container.before(
+  $('<h1></h1>', {
+    text: 'Invat jQuerry',
+  }),
+);

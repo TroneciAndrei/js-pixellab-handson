@@ -28,11 +28,12 @@ class Car {
     this.carTop = document.createElement('div');
     this.carTop.classList.add('car__top');
     this.car.append(this.carTop);
-    // this.carTop.style.backgroundColor = this.color;
+    this.carTop.style.backgroundColor = this.color;
 
     this.carBody = document.createElement('div');
     this.carBody.classList.add('car__body');
     this.car.append(this.carBody);
+    this.carBody.style.backgroundColor = this.color;
 
     this.lightBack = document.createElement('div');
     this.lightBack.classList.add('light', 'light--back');
@@ -101,11 +102,8 @@ class Car {
     if (this.areHazardsOn) {
       this.interval = setInterval(() => {
         this.engageBreak();
-        this.areHazardsOn = false;
       }, 500);
-    }
-
-    if (!this.areHazardsOn) {
+    } else {
       clearInterval(this.interval);
       this.disengageBreak();
       delete this.interval;
