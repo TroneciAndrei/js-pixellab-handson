@@ -67,3 +67,15 @@ $container.before(
     text: 'Invat jQuerry',
   }),
 );
+
+const $para = $('<p>', {
+  text: 'Documentatia jQuery poate fi gasita ',
+}).append(
+  $('<a>', {
+    text: 'aici.',
+    href: 'https://jquery.com/',
+    title: 'Documentatie',
+  }),
+);
+
+$body.append($para);
