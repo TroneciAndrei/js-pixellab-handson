@@ -8,6 +8,8 @@ $(function () {
       const formData = new FormData(this);
 
       $form.after(renderData(formData));
+
+      $form.trigger('reset');
     })
     .find('fieldset:nth-child(2)')
     .append(renderSkillControls());
@@ -27,11 +29,18 @@ $(function () {
   }
 
   function renderData(formData) {
-    const $container = $('<div></div>', {
-      class: 'personDisplay',
-    });
+    let $container = $('.personDisplay');
 
-    $container.append(renderPerson(formData)).append(renderSkills(formData));
+    if ($container.length <= 0) {
+      $container = $('<div></div>', {
+        class: 'personDisplay',
+      });
+    }
+
+    $container
+      .empty()
+      .append(renderPerson(formData))
+      .append(renderSkills(formData));
 
     return $container;
   }
@@ -47,10 +56,12 @@ $(function () {
       const keyName = keys[i];
 
       // mai e un bug
-      if (keyName === 'skill-input') continue;
+      if (keyName === 'skill-input' || !keyName.startsWith('skill-')) continue;
 
       skillsArray.push(objectData[keyName]);
     }
+
+    if (skillsArray.length <= 0) return '';
 
     const $p = $('<p>', {
       text: `Skills: ${skillsArray}`,
@@ -70,15 +81,52 @@ $(function () {
         });
       }
 
-      $('<li>', {
-        text: skill,
-      })
+      $ul
+        .on('click', '.removeSkillButton', function () {
+          const $removeSkillButton = $(this);
+
+          $removeSkillButton.parent().remove();
+        })
+        .on('click', '.editSkillButton', function () {
+          const $editSkillButton = $(this);
+
+          $editSkillButton
+            .siblings('input[name^= "skill-"]')
+            .attr('type', 'text');
+
+          $editSkillButton.siblings('.skillDisplay').hide();
+          $editSkillButton.siblings('.removeSkillButton').hide();
+          $editSkillButton.siblings('.cancelSkillButton').show();
+          $editSkillButton.siblings('.saveSkillButton').show();
+          $editSkillButton.hide();
+        })
+        .on('click', '.cancelSkillButton', function () {
+          const $cancelButton = $(this);
+
+          $cancelButton.hide();
+          $cancelButton
+            .siblings('input[name^="skill-"]')
+            .attr('type', 'hidden');
+          $cancelButton.siblings('.saveSkillButton').hide();
+          $cancelButton.siblings('.skillDisplay').show();
+          $cancelButton.siblings('.removeSkillButton').show();
+          $cancelButton.siblings('.editSkillButton').show();
+        })
+        .on('click', '.saveSkillButton', function () {
+          const $saveButton = $(this);
+
+          $saveButton
+            .siblings('.skillDisplay')
+            .text($saveButton.siblings('input[name^="skill-"]').val());
+
+          // insert code from homework here
+        });
+
+      $('<li>')
         .append(
-          $('<button>', {
-            type: 'button',
-            text: '-',
-            class: 'removeSkillButton',
-            title: 'Elimina Skill',
+          $('<span>', {
+            text: skill,
+            class: 'skillDisplay',
           }),
         )
         .append(
@@ -88,6 +136,39 @@ $(function () {
             value: skill,
           }),
         )
+        .append(
+          $('<button>', {
+            type: 'button',
+            text: '-',
+            class: 'removeSkillButton',
+            title: 'Elimina Skill',
+          }),
+        )
+        .append(
+          $('<button>', {
+            type: 'button',
+            text: 'Editeaza',
+            class: 'editSkillButton',
+            title: 'Editeaza skill',
+          }),
+        )
+        .append(
+          $('<button>', {
+            type: 'button',
+            text: 'Salveaza',
+            class: 'saveSkillButton',
+            title: 'Salveaza skill',
+          }).hide(),
+        )
+        .append(
+          $('<button>', {
+            type: 'button',
+            text: 'Anuleaza',
+            class: 'cancelSkillButton',
+            title: 'Anuleaza',
+          }).hide(),
+        )
+
         .appendTo($ul);
 
       return $ul;
