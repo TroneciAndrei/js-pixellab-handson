@@ -40,6 +40,51 @@
     <fieldset>
       <legend>Skills</legend>
     </fieldset>
+
+
+    <input
+      type="checkbox"
+      name="has-pets"
+      id="has-pets"
+    >
+    <label for="has-pets">Are animale de casa</label>
+    <fieldset
+      class="pet-fieldset"
+      style="display:none"
+    >
+      <legend>Pets</legend>
+
+      <label for="pet-name">Nume animal</label>
+      <input
+        type="text"
+        name="pet-name"
+        id="pet-name"
+      >
+
+      <br><br>
+
+      <label for="pet-species">Specie animal</label>
+      <input
+        type="text"
+        name="pet-species"
+        id="pet-species"
+      >
+
+      <br><br>
+
+      <label for="pet-age">Varsta animal</label>
+      <input
+        type="number"
+        name="pet-age"
+        id="pet-age"
+      >
+
+      <br><br>
+      <button
+        type="button"
+        title="Adauga animal"
+      >Adauga animal</button>
+    </fieldset>
   </form>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
