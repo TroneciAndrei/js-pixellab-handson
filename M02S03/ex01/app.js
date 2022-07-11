@@ -6,29 +6,47 @@ class Car {
     this.speed = speed;
   }
 
-  accelerate() {
-    this.speed++;
-
-    return this;
-  }
-
-  // accelerate(...numbers) {
-  //   this.speed += Number(numbers);
+  // accelerate() {
+  //   this.speed++;
 
   //   return this;
   // }
 
-  decelerate() {
-    this.speed--;
+  accelerate(...numbers) {
+    this.speed += Number(numbers);
 
     return this;
   }
 
-  // decelerate(...numbers) {
-  //   this.speed -= Number(numbers);
+  // decelerate() {
+  //   this.speed--;
 
   //   return this;
   // }
+
+  decelerate(...numbers) {
+    this.speed -= Number(numbers);
+
+    return this;
+  }
+
+  setSpeed(speed) {
+    this.speed = speed;
+
+    return this;
+  }
+
+  displaySpeed(targetSelector = '.message') {
+    let element = document.querySelector(targetSelector);
+
+    if (element === null) {
+      element = document.createElement('p');
+      element.classList.add(targetSelector.replace('.', ''));
+      document.body.append(element);
+    }
+
+    element.innerText = this.speed;
+  }
 }
 
 const audi = new Car('Audi', 'black', 4, 50);
@@ -43,4 +61,12 @@ audi
   .decelerate()
   .decelerate();
 
-// console.log(audi.speed);
+audi.displaySpeed();
+
+audi.accelerate(12).decelerate(3).accelerate(4);
+
+audi.displaySpeed();
+
+audi.setSpeed(4).accelerate(5);
+
+audi.displaySpeed();
