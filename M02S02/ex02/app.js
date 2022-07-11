@@ -34,7 +34,7 @@ $(function () {
 
       const $inputs = $petButton
         .parents('.pet-fieldset')
-        .find('input[name^="pet-"]');
+        .find('input[name^="pet-"]:not([name^="pet-data"])');
 
       const petValues = [];
       $inputs.each(function () {
@@ -85,7 +85,7 @@ $(function () {
 
       const $inputs = $friendButton
         .parents('.friend-fieldset')
-        .find('input[name^="friend-"]');
+        .find('input[name^="friend-"]:not([name^="friend-data"])');
 
       const friendValues = [];
       $inputs.each(function () {
