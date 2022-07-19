@@ -1,0 +1,12 @@
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group.has-danger input {
+  border: 1px solid red;
+}
+
+.form-group.has-danger label,
+.form-group .pristine-error {
+  color: red;
+}
